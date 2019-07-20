@@ -1,0 +1,14 @@
+{
+  "name": "python-django",
+  "version": 2,
+  "public": true,
+  "builds": [{
+    "src": "DjangoS/wsgi.py",
+    "use": "@ardnt/now-python-wsgi",
+    "config": { "maxLambdaSize": "15mb" }
+}],
+"routes": [{
+    "src": "/(.*)",
+    "dest": "DjangoS/wsgi.py"
+}]
+}
