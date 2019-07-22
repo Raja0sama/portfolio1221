@@ -33,7 +33,7 @@ def register(request):
                 a = {
                 'popup':True,
                 'popupc':'success',
-                'popupm':'Successfull registerd'
+                'popupm':'Successfull registerd :)'
                 }
                 return render(request,'login.html',a)
         else:
