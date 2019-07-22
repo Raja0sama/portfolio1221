@@ -13,20 +13,36 @@ def register(request):
         passwordc = request.POST['passwordc']
         if password == passwordc :
             if User.objects.filter(username=usernames).exists():
-                print('user Taken')
-                return render(request,'register.html')
+                a = {
+                'popup':True,
+                'popupc':'danger',
+                'popupm':'User Exist'
+                }
+                return render(request,'register.html',a)
             elif User.objects.filter(email=email).exists():
-                print('email taken')
-                return render(request,'register.html')
+                a = {
+                'popup':True,
+                'popupc':'danger',
+                'popupm':'Email taken'
+                }
+                return render(request,'register.html',a)
             else :
                 user = User.objects.create_user(username=usernames,password=password,email=email,first_name=firstname,last_name=secondname)
                 user.save();
 
-                print('user created')
-                return redirect('login')
+                a = {
+                'popup':True,
+                'popupc':'success',
+                'popupm':'Successfull registerd'
+                }
+                return render(request,'login.html',a)
         else:
-            print('Passowrd didnt matched')
-            return render(request,'register.html')
+            a = {
+                'popup':True,
+                'popupc':'danger',
+                'popupm':'Password Didnt Match'
+            }
+            return render(request,'register.html',a)
     else:
             return render(request,'register.html')
 
@@ -41,8 +57,12 @@ def login(request):
             auth.login(request,user)
             return redirect('/')
         else:
-            print('Login Failed')
-            return render(request,'login.html')
+            a = {
+                'popup':True,
+                'popupc':'danger',
+                'popupm':'Login Failed'
+            }
+            return render(request,'login.html',a)
     else:
         return render(request,'login.html')
 

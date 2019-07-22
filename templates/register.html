@@ -1,22 +1,63 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-<body>
-    <form action="register" method="POST">
-       {% csrf_token %}
-        <input type="text" name = "first_name" placeholder="Enter first name "/></br>
-        <input type="text" name = "second_name" placeholder="Enter second name "/></br>
-        <input type="text" name = "username" placeholder="Enter Username "/></br>
-        <input type="email" name = "email" placeholder="Enter Email "/></br>
-        <input type="password" name = "password" placeholder="Enter password"/></br>
-        <input type="password" name = "passwordc" placeholder="Confirm password"/></br>
-        <input type="submit" value="submit">
+{% load static %}
 
-    </form>
-</body>
-</html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../../../favicon.ico">
+
+    <title>Signin Template for Bootstrap</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'dist/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'signin.css' %}" rel="stylesheet">
+  </head>
+<body class="text-center">
+  
+   
+    <form class="form-signin" action="register" method="POST">
+        {% csrf_token %}
+  
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Please sign UP</h1>
+        {% if popup %}
+        <div class="alert alert-{{popupc}}" role="alert">
+            {{popupm}}
+          </div>
+        {% else %}
+    
+        {% endif %}
+        <label for="input1" class="sr-only">Enter first name</label>
+        <input type="text" id="input1"  name = "first_name" class="form-control" placeholder=" First Name" required autofocus>
+        
+        <label for="input2" class="sr-only">Enter Second name</label>
+        <input type="text" id="input2"  name = "second_name" class="form-control" placeholder=" Last Name" required autofocus>
+        
+         
+        <label for="input3" class="sr-only">Enter Username</label>
+        <input type="text" id="input3"  name = "username" class="form-control" placeholder="Username" required autofocus>
+        
+         
+        <label for="input4" class="sr-only">Enter Email</label>
+        <input type="email" id="input4"  name = "email" class="form-control" placeholder="Email " required autofocus>
+        
+        <label for="input5" class="sr-only">Enter Password</label>
+        <input type="password" id="input5"  name = "password" class="form-control" placeholder="Enter Password" required autofocus>
+        
+        
+  
+        <label for="input6" class="sr-only">Enter Password</label>
+        <input type="password" id="input6"  name = "passwordc" class="form-control" placeholder="Confirm Password" required autofocus>
+        
+        
+   
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign UP</button>
+        <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
+      </form>
+  </body>
+  </html>
